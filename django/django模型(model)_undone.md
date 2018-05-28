@@ -47,8 +47,16 @@ django字段对应的就是数据库中的字段,类属性就是数据表的字�
 | URLField | 一个用于保存URL地址的字符串类型，默认最大长度200。 |
 | UUIDField | 用于保存通用唯一识别码（Universally Unique Identifier）的字段。使用Python的UUID类。在PostgreSQL数据库中保存为uuid类型，其它数据库中为char(32)。这个字段是自增主键的最佳替代品 |
 
-关联字段
+关系型字段:
 
+第一个参数为
+
+一对一:
+使用`models.OneToOneField(to,on_delete)`来设置,常用于对原模型功能进行拓展(相当于是),
+
+一对多
+
+多对多
 
 
 
