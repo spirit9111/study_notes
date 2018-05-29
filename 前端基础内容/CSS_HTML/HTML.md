@@ -67,3 +67,14 @@ HTML(HyperText Mark-up Language)是超(超链接)文本标(标签)记语言.
 | button | 自定义按钮 |
 | select | 下拉框 |
 | option | 选项标签,与select搭配使用 |
+
+1.display
+块元素默认display:block;行内非替换元素(a,span)默认为display：inline;行内替换元素(input)默认为display:inline-block;
+a.display:none;不显示该元素，也不会保留该元素原先占有的文档流位置。
+b.display:block;转换为块级元素。
+c.display:inline;转换为行内元素。
+d.display:inline-block;转换为行内块级元素。
+2.float
+当把行内元素设置完float:left/right后，该行内元素的display属性会被赋予block值，且拥有浮动特性。行内元素去除了之间的莫名空白。
+3.position
+当为行内元素进行定位时，position:absolute与position:fixed.都会使得原先的行内元素变为块级元素。
