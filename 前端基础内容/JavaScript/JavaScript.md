@@ -159,3 +159,37 @@ for(var i=0;i<len;i++)
 `setInterval`  反复执行的定时器
 
 `clearInterval` 关闭反复执行的定时器
+
+## javascript对象创建方式 ##
+
+第一种,通过object类创建
+```
+var person = new Object();
+// 添加属性：
+person.name = 'tom';
+// 添加方法：
+person.sayName = function(){
+    alert(this.name);
+}
+// 调用属性和方法：
+alert(person.age);
+person.sayName();
+```
+
+第二种,通过直接量方式创建,**常用方式**
+
+```
+var person2 = {
+    name:'Rose',
+    age: 18,
+    sayName:function(){
+        alert('My name is' + this.name);
+    }
+}
+
+// 调用属性和方法：
+alert(person2.age);
+person2.sayName();
+```
+
+

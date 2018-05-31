@@ -47,31 +47,51 @@ django字段对应的就是数据库中的字段,类属性就是数据表的字�
 | URLField | 一个用于保存URL地址的字符串类型，默认最大长度200。 |
 | UUIDField | 用于保存通用唯一识别码（Universally Unique Identifier）的字段。使用Python的UUID类。在PostgreSQL数据库中保存为uuid类型，其它数据库中为char(32)。这个字段是自增主键的最佳替代品 |
 
-关系型字段:
+## 关系型字段: ##
 
 第一个参数为
 
-一对一:
-使用`models.OneToOneField(to,on_delete)`来设置,常用于对原模型功能进行拓展(相当于是),
+**一对一:**
 
-一对多
+`models.OneToOneField(to,on_delete)`
+常用于对原模型功能进行拓展(相当于是继承原模型的功能并增加新功能)
 
-多对多
+**一对多:**
 
-
-
-
-
+` models.ForeignKey(to, on_delete, **options)[source]`
+外键需要设置在多的一方
 
 
+**多对多:**
+
+`models.ManyToManyField(to, **options)[source]`
+使用多对多关系时,会自动生成中间表`through`,中间表保存着两个关系字段的主键,使用这两个主键约束来确定中间表的一行数据.
 
 
+# 常用参数_undone: #
 
+关于字段参数,查看[https://yiyibooks.cn/xx/Django_1.11.6/ref/models/fields.html](https://yiyibooks.cn/xx/Django_1.11.6/ref/models/fields.html "字段参数")
+
+
+## 元数据Meta ##
+
+模型的元数据，指的是“除了字段外的所有内容”，例如排序方式、数据库表名、人类可读的单数或者复数名等等。所有的这些都是非必须的，甚至元数据本身对模型也是非必须的。
+
+常用元数据
+
+| Meta | 介绍 |
+| --- | --- |
+| ordering | 排序方式,按照指定的(一个或多个)字段进行排序,默认升序.`-`降序,`?`随机 |
+| verbose_name | 相当于给字段起别名,支持中文 |
+| verbose_name_plural | 同上,单复数的区别 |
+| indexes | 添加索引,为指定的字段添加索引 |
+| unique_together | 联合约束,任意一个条件不满足就能创建实例,比如同名的人只要其他任意一个条件不满足也能加入到数据库中 |
 
 
 对models增/删/改操作基本步骤:
 
-1.在models.py中增/删/改models
+
+1.在models.py中增/删/改models(新建的app需要修改`settings`的`INSTALLED_APPS`)
 
 2.将对models的增/删/改操作,创建到migrations(概念和git中的add类似)
 `python manage.py makemigrations`
@@ -86,30 +106,5 @@ migrate命令和git命令的思路十分相似,migrations相当于git的缓存�
 
 如果重写了生成的migrations可以用进行检查
 `python manage.py check`
-
-
-增删改查操作:
-
-查询:
-
-查询数据表的所有内容,类似select * from ...
-`model_name.objects.all()`
-
-查询数据表中满足条件的内容,类似where
-`model_name.objects.filter(条件)`
-
-查询一个满足条件的内容
-`model_name.objects.get(条件)`
-
-
-
-
-
-
-增/改:
-
-
-删除:
-
 
 
