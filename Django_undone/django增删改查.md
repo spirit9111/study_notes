@@ -29,19 +29,22 @@
 `field__lookuptype=value`
 常用参数:
 
-| 参数 | 介绍 |
-| --- | --- |
-| __gt/__gte | 大于/大于等于 |
-| __lt/__lte | 小于/小于等于 |
-| __in | 范围 |
-| __exact | 默认值,条件严格区分大小写 |
-| __iexact | 条件不区分大小写 |
-| __contains | 包含条件,区分大小写 |
-| __icontains | 包含条件,不区分大小写 |
-| __regex | 使用正则查询,区分大小写 |
-| __iregex | 使用正则查询,不区分大小写 |
-| __startswith/__endswith | 以什么开头/结尾,区分大小写 |
-| __istartswith/__iendswith | 以什么开头/结尾,不区分大小写 |
+| 参数 | 介绍 |对应的sql|
+| --- | --- | --- |
+| __gt/__gte | 大于/大于等于 | >/>= |
+| __lt/__lte | 小于/小于等于 | </<= |
+| __in | 在..之内的匹配 | in |
+| __range | 范围匹配 | between...and |
+| __exact | 默认值,条件严格区分大小写 | where |
+| __iexact | 条件不区分大小写 | like |
+| __contains | 包含条件,区分大小写 | like binary %xxx% |
+| __icontains | 包含条件,不区分大小写 | like %xxx% |
+| __date | 匹配日期,形如(2018,6,1) |  |
+| __isnull | 判断是否为空 | is (not) null |
+| __regex | 使用正则查询,区分大小写 | regex binary |
+| __iregex | 使用正则查询,不区分大小写 | regex |
+| __startswith/__endswith | 以什么开头/结尾,区分大小写 | rlike binary xx%/rlike binary %xx |
+| __istartswith/__iendswith | 以什么开头/结尾,不区分大小写 | rlike xx%/rlike %xx |
 
 
 ## 跨关系表查询 ##
