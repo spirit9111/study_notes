@@ -46,6 +46,7 @@ QuerySet是**惰性**的操作,只有进行**evaluated**操作时才会真正的
 | delete() | 删除 |
 | aggregate() | 聚合操作 |
 
+
 关于**聚合函数**
 
 导入方式`from django.db.models import *`

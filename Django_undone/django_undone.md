@@ -24,6 +24,9 @@ django1.11
 提交生成的migrations文件
 `python manage.py migrate`
 
+基本设置:
+
+ROOT_URLCONF:定义项目的入口,指定**根URLconf**的路径
 
 
 
