@@ -1,7 +1,6 @@
-# git常用命令  #
+# git常用命令 #
 
 ----------
-
 
 设置用户名,邮箱
 `git config --global user.name "Your Name"`
@@ -34,7 +33,7 @@
 查看命令日志,可以查找到每一次操作对应的id
 `git reflog`
 
-撤销对文件的改动(拿本质是版本库替换工作区)
+撤销对文件的改动(本质是版本库替换工作区)
 `git checkout -- file`
 
 还原版本,num为上几次操作

@@ -3,6 +3,8 @@
 ----------
 ## 配置相关 ##
 
+----------
+
 安装第三方库:  flask-sqlalchemy 和 pymysql
 
 基本连接配置:
@@ -27,9 +29,9 @@ db = SQLAlchemy(app)
 
 |  名字	|  备注  |  
 | --- | --- |  
-|  SQLALCHEMY_DATABASE_URI	|  用于连接的数据库 URI 。例如:sqlite:////tmp/test.dbmysql://username:password@server/db|  
+|  **SQLALCHEMY_DATABASE_URI**	|  用于连接的数据库 URI 。例如:sqlite:////tmp/test.dbmysql://username:password@server/db|  
 |  SQLALCHEMY_BINDS	|  一个映射 binds 到连接 URI 的字典。更多 binds 的信息见用 Binds 操作多个数据库。|  
-|  SQLALCHEMY_ECHO	|  如果设置为Ture， SQLAlchemy 会记录所有 发给 stderr 的语句，这对调试有用。(打印sql语句)|  
+|  **SQLALCHEMY_ECHO**	|  如果设置为Ture， SQLAlchemy 会记录所有 发给 stderr 的语句，这对调试有用。(打印sql语句)|  
 |  SQLALCHEMY_RECORD_QUERIES	|  可以用于显式地禁用或启用查询记录。查询记录 在调试或测试模式自动启用。更多信息见get_debug_queries()。|  
 |  SQLALCHEMY_NATIVE_UNICODE	|  可以用于显式禁用原生 unicode 支持。当使用 不合适的指定无编码的数据库默认值时，这对于 一些数据库适配器是必须的（比如 Ubuntu 上 某些版本的 PostgreSQL ）。|  
 |  SQLALCHEMY_POOL_SIZE	|  数据库连接池的大小。默认是引擎默认值（通常 是 5 ）|  
@@ -37,6 +39,8 @@ db = SQLAlchemy(app)
 |  SQLALCHEMY_POOL_RECYCLE	|  多少秒后自动回收连接。这对 MySQL 是必要的， 它默认移除闲置多于 8 小时的连接。注意如果 使用了 MySQL ， Flask-SQLALchemy 自动设定 这个值为 2 小时。|  
 
 ## 建立模型相关 ##
+
+----------
 
 常用字段
 
@@ -83,11 +87,10 @@ db = SQLAlchemy(app)
 删除表:` db.drop_all()`
 
 
-
-
-
-
 ## 数据库操作 ##
+
+----------
+
 增删改需要`commit`
 
 增:
@@ -130,5 +133,46 @@ db.session.commit()
 | order_by()	| 根据指定条件对原查询结果进行排序，返回一个新查询 |
 | group_by()	| 根据指定条件对原查询结果进行分组，返回一个新查询 |
 
-分页查询
+**分页查询**
 `Role.query.paginate(页数,每页显示个数).items`
+
+## 数据库迁移 ##
+
+----------
+安装flask-migrate
+
+基本使用流程:
+1.导入模块,创建migrate对象
+```python
+# 导入模块
+from flask-migrate import Migrate,MigrateCommand
+
+# 创建migrate对象
+migrate = Migrate(app,db)  # app为主flask对象,db为SQLAlchemy对象
+
+# 将migratecommand命令加入到manager进行管理,xxx是自定的命令名称,用于在在命令行进行操作.
+manager.add_command('xxx',MigrateCommand)  # manage是flask_script的Manager对象,
+```
+
+2.首次操作时需要**初始化**,自动给项目创建migrations文件夹
+`python yyy.py xxx init`
+
+3.创建迁移脚本(相当于git中的add)
+```python
+python yyy.py xxx migrate -m '描述信息'
+```
+4.更新/回退版本,查看历史版本(相当于git的commit)
+**回退可能会存在bug**
+```python
+# 更新到新本版,版本号可选
+python yyy.py xxx upgrade 版本号
+
+# 回退到旧版本
+python app.py db downgrade 版本号
+
+# 查看提交的历史版本
+python app.py db history
+
+输出格式：<base> ->  版本号 (head), initial migration
+
+```
