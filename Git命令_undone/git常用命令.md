@@ -43,6 +43,34 @@
 从版本库删除
 `git rm file`然后commit
 
+设置标签
+`git tag -a 标签名 -m '标签描述'`
+
+推送标签
+`git push origin 标签名`
+
+
+删除本地标签
+`git tag -d 标签名`
+
+删除远程仓库标签
+`git push origin --delete tag 标签名`
+
+
+查看当前分支
+`git branch`
+
+切换分支
+`git checkout -b dev`
+
+推送分支
+`git push -u origin 分支`
+
+合并分支
+`git merge 分支`
+
+
+
 ## 连接github步骤 ##
 
 1.`ssh-keygen -t rsa -C "youremail@example.com"`
