@@ -2,6 +2,34 @@
 
 ----------
 
+CSRFProtect 相关设置
+
+form表单中设置csrf_token保护
+```
+<input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/>
+```
+
+
+ajax请求是headers中带上csrf_token
+```
+headers: {
+    "X-CSRFToken": getCookie("csrf_token")
+},
+```
+后端接收请求后,给每一个请求cookie中添加csrf_token
+```
+@app.after_request
+def after_request(response):
+    # 调用函数生成 csrf_token
+    csrf_token = generate_csrf()
+    # 通过 cookie 将值传给前端
+    response.set_cookie("csrf_token", csrf_token)
+    return response
+```
+
+
+
+
 CSRF是什么?CSRF有什么用处?
 CSRF(Cross Site Request Forgery),跨站请求伪造.
 简单来说就是黑客可以通过CSRF冒用你的身份,在网站上进行了没有经过你允许的特殊操作(恶意操作),比如转账/购买等.

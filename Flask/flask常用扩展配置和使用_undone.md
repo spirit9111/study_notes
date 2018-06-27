@@ -10,9 +10,8 @@ flask常用扩展配置和使用
 import redis
 
 redis_store = redis.StrictRedis()
-
-**Flask-SQLalchemy**：操作数据库；
 ```
+**Flask-SQLalchemy**：操作数据库；
 ----------
 ```
 from flask_sqlalchemy import SQLAlchemy
@@ -89,6 +88,11 @@ Flask-RESTful：开发REST API的工具；
 **Flask-Bootstrap**：集成前端Twitter Bootstrap框架；
 
 ----------
+```
+from flask_bootstrap import Bootstrap
+
+bootstrap = Bootstrap(app)
+```
 
 **Flask-Moment**：本地化日期和时间；
 
