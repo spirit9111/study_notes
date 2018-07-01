@@ -52,3 +52,8 @@ source /usr/local/bin/virtualenvwrapper.sh
 
 导入包配置
 `pip install -r 文件名.txt`
+
+
+报错相关:
+locale.Error: unsupported locale setting
+`export LC_ALL=C`

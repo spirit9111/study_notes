@@ -18,6 +18,7 @@ from flask_sqlalchemy import SQLAlchemy
 
 SQLALCHEMY_DATABASE_URI = "mysql://root:mysql@127.0.0.1:3306/information"
 SQLALCHEMY_TRACK_MODIFICATIONS = False
+SQLALCHEMY_COMMIT_ON_TEARDOWN = True
 
 db = SQLAlchemy(app)
 ```

@@ -70,14 +70,6 @@ DATABASES = {
 }
 ```
 
-
-
-
-
-
-
-
-
 注意： Django的开发服务器具有自动重载功能，当你的代码有修改，每隔一段时间服务器将自动更新.
 
 
@@ -96,3 +88,25 @@ django中的view就是第一个简单的python函数
 返回处理结果
 
 
+views中获取参数的方式
+1.url中的参数,使用
+```python
+def test(request,参数1,参数2...)
+    pass
+```
+
+2.url中?后面的Query String
+`request.GET.get('参数')`
+
+
+3.请求体中的参数
+3.1单纯的form表单
+`request.POST.get`
+
+3.2其他数据,原始数据
+
+```
+json_str = request.body
+json_str = json_str.decode()  # python3.6 无需执行此步
+req_data = json.loads(json_str)
+```
