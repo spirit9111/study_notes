@@ -7,13 +7,13 @@ django1.11
 几个常用命令
 
 创建一个名为project_name的django项目
-`django‐admin.py startproject project_name`
-
-运行django开发服务器(http://127.0.0.1:8000/)
-`python manage.py runserver`
+`django‐admin startproject project_name`
 
 创建一个名为app_name的app应用
 `python manage.py startapp app_name`
+
+运行django开发服务器(http://127.0.0.1:8000/)
+`python manage.py runserver`
 
 启动django的python-shell(自动调用django的settings)
 `python manage.py shell`
@@ -27,14 +27,6 @@ django1.11
 基本设置:
 
 ROOT_URLCONF:定义项目的入口,指定**根URLconf**的路径
-
-
-
-
-
-
-
-
 
 django设置相关内容--settings.py
 
@@ -89,7 +81,7 @@ django中的view就是第一个简单的python函数
 
 
 views中获取参数的方式
-1.url中的参数,使用
+1.url中的参数,使用`?P<参数>`和`(正则)`
 ```python
 def test(request,参数1,参数2...)
     pass
