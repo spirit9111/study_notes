@@ -18,6 +18,7 @@ setting下的`INSTALLED_APPS`中进行设置
 5.2在项目中`urls.py`中的总路由中配置
 
 6.配置静态文件(debug模式生效)
+6.1设置static
 ```
 #在setting中新增
 
@@ -25,7 +26,13 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static'),
 ]
+```
+6.2设置templates
+```
+#根路径下新建 templates文件夹
+#在setting中的TEMPLATES设置模板路径
 
+'DIRS': [os.path.join(BASE_DIR, 'templates')],
 ```
 
 7.配置redis存储session
@@ -53,6 +60,8 @@ SESSION_CACHE_ALIAS = "default"
 # __init__.py中设置
 from pymysql import install_as_MySQLdb
 
+install_as_MySQLdb()
+
 #修改数据库配置
 DATABASES = {
     'default': {
@@ -68,3 +77,9 @@ DATABASES = {
 8.3 新建数据库
 
 
+其他设置:
+
+```
+LANGUAGE_CODE = 'zh-hans'
+TIME_ZONE = 'Asia/Shanghai'
+```

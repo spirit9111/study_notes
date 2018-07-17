@@ -24,6 +24,12 @@ django1.11
 提交生成的migrations文件
 `python manage.py migrate`
 
+当检查不到models时
+`python manage.py makemigrations --empty app_name`
+
+创建管理员:
+`python manage.py createsuperuser`
+
 基本设置:
 
 ROOT_URLCONF:定义项目的入口,指定**根URLconf**的路径
@@ -44,23 +50,7 @@ INSTALLED_APPS = [
 ]
 ```
 
-数据库的配置(mysql为例)
 
-```python
-import pymysql
-pymysql.install_as_MySQLdb()
-
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'mysite',
-        'HOST': '192.168.1.1',
-        'USER': 'root',
-        'PASSWORD': 'pwd',
-        'PORT': '3306',
-    }
-}
-```
 
 注意： Django的开发服务器具有自动重载功能，当你的代码有修改，每隔一段时间服务器将自动更新.
 

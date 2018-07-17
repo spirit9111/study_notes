@@ -33,7 +33,7 @@ django字段对应的就是数据库中的字段,类属性就是数据表的字�
 常用字段类型
 
 |    常用类型  | 说明 |
-| ---------- | --- |
+| --- | --- |
 | CharField |  字符串类型。必须接收一个max_length参数，表示字符串长度不能超过该值。默认的表单标签是input text。最常用的filed，没有之一！ |
 | IntegerField | 整数类型，最常用的字段之一。取值范围-2147483648到2147483647。在HTML中表现为NumberInput标签。 |
 | BooleanField | 布尔值类型。默认值是None。在HTML表单中体现为CheckboxInput标签。如果要接收null值，请使用NullBooleanField。 |

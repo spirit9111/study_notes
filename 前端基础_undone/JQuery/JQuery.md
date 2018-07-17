@@ -112,7 +112,7 @@ slideUp() 向上卷起
 html()可以取出/设置对应标签内的代码块
 ```
 // 取出html内容
-var $htm = $('#div1').html();
+var $html = $('#div1').html();
 
 // 设置html内容
 $('#div1').html('<span>添加文字</span>');
